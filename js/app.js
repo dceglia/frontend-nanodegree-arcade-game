@@ -1,10 +1,29 @@
 function Enemy() {
-        this.x = 1;
-        this.y = 1;
-        this.sprite = 'images/enemy-bug.png';
+    this.x = 1;
+    this.y = 1;
+    this.sprite = 'images/enemy-bug.png';
 };
 
+function Player() {
+    this.x = 2;
+    this.y = 2;
+    this.player = 'images/char-boy.png'
+
+    // update() {
+
+    // }
+
+    // render() {
+
+    // }
+
+    // handleInput() {
+
+    // }
+}
+
 let enemy = new Enemy();
+let player = new Player();
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -19,9 +38,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.player), this.x, this.y);
+}
 
 
 // Now instantiate your objects.
@@ -48,3 +67,8 @@ document.addEventListener('keyup', function(e) {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+
+    // Now write your own player class
+    // This class requires an update(), render() and
+    // a handleInput() method.
+
