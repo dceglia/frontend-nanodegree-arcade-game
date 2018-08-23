@@ -2,6 +2,11 @@ function Enemy() {
     this.x = 1;
     this.y = 1;
     this.sprite = 'images/enemy-bug.png';
+
+    // Draw the enemy on the screen, required method for game
+    Enemy.prototype.render = function() {
+        ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 60);
+    };  
 };
 
 function Player() {
@@ -13,9 +18,9 @@ function Player() {
 
     // }
 
-    // render() {
-
-    // }
+    Player.prototype.render = function() {
+        ctx.drawImage(Resources.get(this.player), this.x = 200, this.y = 400);
+    }
 
     // handleInput() {
 
@@ -27,17 +32,7 @@ let enemy = new Enemy();
 // let enemy3 = new Enemy();
 let player = new Player();
 // const allEnemies = [];
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 60);
-    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 145);
-    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 225);
-};
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.player), this.x = 200, this.y = 400);
-}
+// ======================================================================
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
