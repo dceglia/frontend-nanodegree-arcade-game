@@ -23,7 +23,21 @@ function Player() {
 }
 
 let enemy = new Enemy();
+// let enemy2 = new Enemy();
+// let enemy3 = new Enemy();
 let player = new Player();
+// const allEnemies = [];
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 60);
+    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 145);
+    ctx.drawImage(Resources.get(this.sprite), this.x = 1, this.y = 225);
+};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.player), this.x = 200, this.y = 400);
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -32,21 +46,6 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 };
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.player), this.x, this.y);
-}
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
 
 
 // This listens for key presses and sends the keys to your
@@ -72,3 +71,6 @@ document.addEventListener('keyup', function(e) {
     // This class requires an update(), render() and
     // a handleInput() method.
 
+    // Now instantiate your objects.
+    // Place all enemy objects in an array called allEnemies
+    // Place the player object in a variable called player
