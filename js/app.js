@@ -1,6 +1,8 @@
 //   =================
-//   \  /   Bug   \  /
-//    \/    Out    \/
+//    ||           ||
+//    ||    BUG    ||
+//   \  /   OUT   \  /
+//    \/           \/
 //   =================
 
 class Enemy {
@@ -8,8 +10,12 @@ class Enemy {
         this.x = x;
         this.y = y;
         this.sprite = 'images/enemy-bug.png';
-        this.edgeX = this.x > 5;
-        this.edgeY = this.y < 1;
+        this.edgeX = 5;
+
+            // courtesy Mozilla Developer Network
+        var random = function getRandom(min, max) {
+            return Math.random() * (max - min) + min;
+        }
 
             // Draw the enemy on the screen, required method for game
         Enemy.prototype.render = function() {
@@ -18,17 +24,13 @@ class Enemy {
 
             // Update the enemy's position, required method for game
         Enemy.prototype.update = function(dt) {
-            if(this.edgeX) {
-                this.x = -1;
+            if(this.x < this.edgeX) {
+                this.x += dt * random(1,5);
             }
             else {
-                this.x += dt;
+                this.x = -1;
             }
         }
-
-        // changeSpeed() {
-
-        // }
     }
 }
 
@@ -37,7 +39,6 @@ class Player {
         this.x = 2;
         this.y = 5;
         this.player = 'images/char-boy.png';
-        this.one
 
         Player.prototype.update = function() {
         //     did collision happen - x,y coords contact
@@ -72,12 +73,12 @@ class Player {
 }
 
 let player = new Player();
-// let bug1 = new Enemy(-101, 0);
-// let bug2 = new Enemy(-101, 83);
-// let bug3 = new Enemy(-101, 166);
-// const allEnemies = [];
-// allEnemies.push(bug1,bug2,bug3);
-const allEnemies = [...Array(3)].map((_,i) => new Enemy(0,i+1));
+let bug1 = new Enemy(-1, 1);
+let bug2 = new Enemy(-1, 2);
+let bug3 = new Enemy(-1, 3);
+const allEnemies = [];
+allEnemies.push(bug1,bug2,bug3);
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
