@@ -19,13 +19,13 @@ class Enemy {
 
             // Draw the enemy on the screen, required method for game
         Enemy.prototype.render = function() {
-            ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
+            ctx.drawImage(Resources.get(this.sprite), this.x * 100, this.y * 73);
         }
 
             // Update the enemy's position, required method for game
         Enemy.prototype.update = function(dt) {
             if(this.x < this.edgeX) {
-                this.x += dt * random(1,5);
+                this.x += dt * random(1,5) * 2;
             }
             else {
                 this.x = -1;
@@ -78,6 +78,16 @@ let bug2 = new Enemy(-1, 2);
 let bug3 = new Enemy(-1, 3);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
+
+// borders
+
+// win condition
+
+// crash/collision logic
+
+// win modal
+
+// reset
 
 
 // This listens for key presses and sends the keys to your
