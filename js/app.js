@@ -45,7 +45,7 @@ class Player {
         }
 
         Player.prototype.render = function() {
-            ctx.drawImage(Resources.get(this.player), this.x * 101, this.y * 83);
+            ctx.drawImage(Resources.get(this.player), this.x * 101, this.y * 81);
         }
 
         // check 4 win
@@ -56,16 +56,32 @@ class Player {
     handleInput(input) {
         switch(input) {
             case 'left':
-                this.x = this.x + -1;
+                if (this.x > 0) {
+                    this.x = this.x -1;
+                } else {
+                    this.x = this.x;
+                }
                 break;
             case 'up':
-                this.y = this.y + -1;
+                if (this.y > 0) {
+                    this.y = this.y + -1.12;
+                } else {
+                    this.y = this.y;
+                }
                 break;
             case 'right':
-                this.x = this.x + 1;
+                if (this.x < 4) {
+                    this.x = this.x + 1;
+                } else {
+                    this.x = this.x;
+                }
                 break;
             case 'down':
-                this.y = this.y + 1;
+                if (this.y < 5) {
+                    this.y = this.y + 1.12;
+                } else {
+                    this.y = this.y;
+                }
                 break;
         }
     }
@@ -78,8 +94,6 @@ let bug2 = new Enemy(-1, 2);
 let bug3 = new Enemy(-1, 3);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
-
-// borders
 
 // win condition
 
