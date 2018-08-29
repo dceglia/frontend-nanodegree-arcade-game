@@ -30,14 +30,12 @@ var Engine = (function(global) {
 
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
     }
 
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        // player.update();
     }
 
     function render() {

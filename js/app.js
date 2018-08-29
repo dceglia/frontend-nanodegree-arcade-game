@@ -5,6 +5,13 @@
 //    \/           \/
 //   =================
 
+// courtesy Mozilla Developer Network
+var random = function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+// referenced Rodrick Bloomfield's introduction webinar
+// https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000
 class Enemy {
     constructor(x, y) {
         this.x = x;
@@ -12,23 +19,27 @@ class Enemy {
         this.sprite = 'images/enemy-bug.png';
         this.edgeX = 5;
 
-            // courtesy Mozilla Developer Network
-        var random = function getRandom(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
             // Draw the enemy on the screen, required method for game
         Enemy.prototype.render = function() {
-            ctx.drawImage(Resources.get(this.sprite), this.x * 100, this.y * 73);
+            ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
         }
 
             // Update the enemy's position, required method for game
         Enemy.prototype.update = function(dt) {
             if(this.x < this.edgeX) {
-                this.x += dt * random(1,5) * 2;
+                this.x += dt * random(1,6);
             }
             else {
                 this.x = -1;
+            }
+            this.collisionLogic();
+        }
+
+        Enemy.prototype.collisionLogic = function() {
+            if (this.x < player.x + .9 && this.x + .6 > player.x && 
+                this.y < player.y + .5 && this.y + .1 > player.y
+            ) {
+                player.reset();
             }
         }
     }
@@ -40,17 +51,18 @@ class Player {
         this.y = 5;
         this.player = 'images/char-boy.png';
 
-        Player.prototype.update = function() {
-        //     did collision happen - x,y coords contact
-        }
+        // Player.prototype.update = function() {
+
+        // }
 
         Player.prototype.render = function() {
-            ctx.drawImage(Resources.get(this.player), this.x * 101, this.y * 81);
+            ctx.drawImage(Resources.get(this.player), this.x * 101, this.y * 83);
         }
 
-        // check 4 win
-
-        // if contacted - go back to first grass row
+        Player.prototype.reset = function() {
+            this.x = 2;
+            this.y = 5;
+        }
     }
 
     handleInput(input) {
@@ -89,19 +101,15 @@ class Player {
 }
 
 let player = new Player();
-let bug1 = new Enemy(-1, 1);
-let bug2 = new Enemy(-1, 2);
-let bug3 = new Enemy(-1, 3);
+let bug1 = new Enemy(random(-1,10), 1);
+let bug2 = new Enemy(-5, 2);
+let bug3 = new Enemy(-9, 3);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
 
 // win condition
 
-// crash/collision logic
-
 // win modal
-
-// reset
 
 
 // This listens for key presses and sends the keys to your
