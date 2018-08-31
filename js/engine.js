@@ -4,7 +4,9 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        cancel;
+
 
     canvas.width = 505;
     canvas.height = 606;
@@ -19,7 +21,11 @@ var Engine = (function(global) {
 
         lastTime = now;
 
-        win.requestAnimationFrame(main);
+        if (player.safeCross === true) {
+            win.cancelAnimationFrame(cancel);
+        } else {
+            cancel = win.requestAnimationFrame(main);
+        }
     }
 
     function init() {
@@ -36,6 +42,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
+        player.update();
     }
 
     function render() {

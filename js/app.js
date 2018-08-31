@@ -5,12 +5,14 @@
 //    \/           \/
 //   =================
 
+
+var modal = document.querySelector('#modal');
+var timer = document.querySelector('.game-timer');
+
 // courtesy Mozilla Developer Network
 var random = function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
-
-var modal = document.querySelector('#modal');
 
 /* StopWatch function from Udacity scholar Ryan Waite's "Script Store" -
    https://github.com/ryanwaite28/script-store/blob/master/js/stop-watch.js */
@@ -95,6 +97,14 @@ function stopGameTimer() {
     });
 }
 
+// way to reset the timer for another game
+function resetTime() {
+    timer.innerText = '00:00:00';
+    watch.resetTimer(function() {
+        timer.innerText = watch.getTimeString();
+    });
+}
+
 // function implementing the modal
 function showModal() {
     modal.showModal();
@@ -110,21 +120,11 @@ function closeModal() {
 }
 
 // function holding the methods to restart the game
-// function resetGame() {
-//     allMatches = 0;
-//     cardArray = [];
-
-//     closeModal();
-//     resetTime();
-//     resetAfterWin();
-//     shuffleTheDeck();
-
-
-// }
-
-// function win() {
-
-// }
+function resetGame() {
+    closeModal();
+    resetTime();
+    player.reset();
+}
 
 // referenced Rodrick Bloomfield's introduction webinar
 // https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000
@@ -166,10 +166,16 @@ class Player {
         this.x = 2;
         this.y = 5;
         this.player = 'images/char-boy.png';
+        this.safeCross = false;
 
-        // Player.prototype.update = function() {
-
-        // }
+        // referenced Matt Cranford's walkthrough - Thanks!!
+        // https://matthewcranford.com/arcade-game-walkthrough-part-6-collisions-win-conditions-and-game-resets/
+        Player.prototype.update = function() {
+            if (this.y < 0) {
+                this.safeCross = true;
+                showModal();
+            }
+        }
 
         Player.prototype.render = function() {
             ctx.drawImage(Resources.get(this.player), this.x * 101, this.y * 83);
@@ -222,7 +228,7 @@ let bug2 = new Enemy(-5, 2);
 let bug3 = new Enemy(-9, 3);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
-
+startGameTimer();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
