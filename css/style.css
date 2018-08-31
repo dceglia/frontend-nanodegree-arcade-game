@@ -1,3 +1,41 @@
 body {
     text-align: center;
 }
+
+#modal {
+    width: 400px;
+    height: 310px;
+    margin-left:auto;
+    margin-right:auto;
+    transform: translate(0px, -290px);
+}
+
+#modal-title {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.modal-results {
+    margin-left: 20px;
+}
+
+.close-modal {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close-modal:hover {
+    color: #02b3e4;
+    cursor: default;
+}
+
+.modal-buttons {
+    border-top: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}

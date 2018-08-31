@@ -6,8 +6,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <dialog id="modal">
+        <h2 id="modal-title">Congratulations!</h2>
+        <span class="modal-results" id="modal-time"></span>
+        <br></br>
+        <div class="modal-buttons">
+            <button class="modal-replay" onclick="resetGame()">Replay</button>
+            <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+        </div>
+        <span class="close-modal" onclick="closeModal()">X</span>
+    </dialog>
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
+
 </body>
 </html>
