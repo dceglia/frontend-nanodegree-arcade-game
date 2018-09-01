@@ -16,7 +16,7 @@ var random = function getRandom(min, max) {
 
 /* StopWatch function from Udacity scholar Ryan Waite's "Script Store" -
    https://github.com/ryanwaite28/script-store/blob/master/js/stop-watch.js */
-   const StopWatch = function StopWatch() {
+const StopWatch = function StopWatch() {
     const self = this;
   
     let hours = 0;
@@ -80,9 +80,6 @@ var random = function getRandom(min, max) {
     }
 }
 
-// creation of a new instance of the StopWatch() function
-let watch = new StopWatch();
-
 // function to begin the timer and output the time in the HTML
 function startGameTimer() {
     watch.startTimer(function() {
@@ -93,14 +90,6 @@ function startGameTimer() {
 // function to stop the timer and output the time in HTML
 function stopGameTimer() {
     watch.stopTimer(function() {
-        timer.innerText = watch.getTimeString();
-    });
-}
-
-// way to reset the timer for another game
-function resetTime() {
-    timer.innerText = '00:00:00';
-    watch.resetTimer(function() {
         timer.innerText = watch.getTimeString();
     });
 }
@@ -120,10 +109,9 @@ function closeModal() {
 }
 
 // function holding the methods to restart the game
+// referenced Jen Hanson's modal function
 function resetGame() {
-    closeModal();
-    resetTime();
-    player.reset();
+    location.reload();
 }
 
 // referenced Rodrick Bloomfield's introduction webinar
@@ -226,6 +214,7 @@ let player = new Player();
 let bug1 = new Enemy(random(-1,10), 1);
 let bug2 = new Enemy(-5, 2);
 let bug3 = new Enemy(-9, 3);
+let watch = new StopWatch();
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
 startGameTimer();

@@ -7,7 +7,6 @@ var Engine = (function(global) {
         lastTime,
         cancel;
 
-
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -21,6 +20,7 @@ var Engine = (function(global) {
 
         lastTime = now;
 
+        // referenced Matt Cranford's Arcade Game walk-through
         if (player.safeCross === true) {
             win.cancelAnimationFrame(cancel);
         } else {
