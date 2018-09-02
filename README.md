@@ -1,17 +1,19 @@
 # frontend-nanodegree-arcade-game
 ===============================
 
-## General
-
-Welcome to my Udacity FEND Project 3. This is my attempt at the Frogger Clone Arcade Game. 
-
 ## Table of Contents
 
-* [General](#)
+* [General](#general)
 * [Instructions](#instructions)
-* [How to](#how to)
+* [How to](#howto)
+* [Installing](#installing)
 * [Contributing](#contributing)
 * [Credits](#credits)
+* [Future Improvements](#improvements)
+
+## General
+
+Welcome to my Udacity FEND Project 3. This is my attempt at the Frogger Clone Arcade Game for the Grow with Google Scholarship Program. It is a chance for us students to implement Object Oriented Javascript and begin using classes. Some students implemented an entity class and then enemy and player sub-classes and I chose to just stick with an enemy and player class.
 
 ## Instructions for Students prior to Beginning
 
@@ -23,10 +25,21 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 This game is played by using the keyboard arrow keys to move the Sprite in different directions within the board. The object is to get the player across to the water safely within being hit by a bug. If a collision does occur the player will return to the original position for another attempt.
 
+## Installing
+
+To run locally, you can clone or download my version @ https://github.com/dceglia/frontend-nanodegree-arcade-game. After opening the folder containing the files, select index.html and open with your preferred browser. If you've received a zipped copy, unzip, select index.html and open in your browser.
+
 ## Contributing
 
 This repository is my attempt at Project 3 as a Udacity FEND student. Therefore, the project is currently not open for contribution.
 
 ## Credits
 
-Many Thanks to Roderick, project coach for the FEND students, for his time spent on the P3 webinar. Also, thanks to Matt Cranford for his walkthrough blog.
+Many Thanks to Rodrick, project coach for the FEND students, for his time spent on the P3 webinar. Also, thanks to Matt Cranford for his walkthrough blog.
+
+## Future improvements
+
+- implementing other Sprite characters and selection
+- being able to choose your enemy
+- background color or image
+- reset button within game
