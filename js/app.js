@@ -140,7 +140,7 @@ class Enemy {
         }
 
         Enemy.prototype.collisionLogic = function() {
-            if (this.x < player.x + .9 && this.x + .6 > player.x && 
+            if (this.x < player.x + .7 && this.x + .5 > player.x && 
                 this.y < player.y + .5 && this.y + .1 > player.y
             ) {
                 player.reset();
